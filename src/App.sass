@@ -1,0 +1,159 @@
+// Vars
+$dark-grey: #333C4A
+$button-light: #46B7B9
+$button-dark: #2F9296
+$green: #80C000
+$trans: transparent
+
+html, 
+body
+	height: 100%
+
+.body
+	height: 100%
+	background-color: lighten($button-light, 50%)
+	background-size: cover
+	background-position: center
+	text-align: center
+	font-family: 'Amatic SC', cursive
+	color: $dark-grey
+
+h1
+	font-size: 55px
+
+.wrapper
+	height: 100%
+	max-width: 1000px
+	width: 95%
+	margin: 0 auto
+	display: flex
+	justify-content: center
+	align-items: center
+
+[v-cloak]
+	display: none
+
+#app
+	position: relative
+	width: 100%
+	background: rgba(250,250,250,0.5)
+	padding: 0 50px
+	border-radius: 25px
+	box-shadow: 0 0 15px rgba(50,50,50,0.2)
+	transition: all 0.5s ease
+	min-height: 400px
+	display: flex
+	justify-content: center
+	align-items: center
+
+button
+	background: rgba($button-light, 0.9)
+	color: #ECF0F1
+	cursor: pointer
+	&:disabled
+		background: rgba($button-light, 0.6)
+		cursor: not-allowed
+		&:hover
+			border-bottom: 5px solid $trans
+
+.inputs
+	display: flex
+	justify-content: center
+	// max-width: 100%
+	input[type="text"],
+	button
+		display: inline-block
+	button
+		border-radius: 0 5px 5px 0
+	input[type="text"]
+		border-radius: 5px 0 0 5px
+		color: $dark-grey
+
+input[type="text"],
+button
+	padding: 15px 20px 10px
+	border: none
+	border-radius: 5px
+	border-bottom: 5px solid $trans
+	transition: all .25s ease
+	font-size: 25px
+	font-family: 'Roboto', sans-serif
+	&:focus,
+	&:hover,
+	&:active,
+		outline: none
+		border-bottom: 5px solid rgba($button-dark, 0.9)
+
+.photo_credit
+	position: fixed
+	bottom: 0
+	background: rgba(250,250,250,0.5)
+	padding: 5px 15px
+	border-radius: 15px
+	a
+		color: $dark-grey
+
+.toggle
+	display: inline-block
+	width: 60px
+	padding: 2px
+	border: 1px solid rgba($dark-grey, 0.25)
+	border-radius: 20px
+	white-space: nowrap
+	overflow: hidden
+	cursor: pointer
+	// position: absolute
+	background: rgba(250,250,250,0.5)
+	// top: -40px
+	// left: 0
+	opacity: 0.5
+	transition: opacity 0.5s ease
+	&:hover
+		opacity: 1
+  
+	input[type="checkbox"]
+		display: none
+    
+		&:checked + .toggle-slider
+			margin-left: -30px
+			background: $green
+
+	.toggle-slider
+		width: 18px
+		height: 18px
+		background: $green
+		border-radius: 50%
+		display: inline-block
+		vertical-align: top
+		position: relative
+		margin-left: 30px
+		transition: all 0.3s ease
+    
+		&::before
+			content: "Dog"
+			left: -30px
+	
+		&::after
+			content: "Cat"
+			right: -30px
+    
+
+		&::before,
+		&::after
+			position: absolute
+			display: inline-block
+			width: 28px
+			text-align: center
+			line-height: 18px
+
+.checkbox
+	display: block
+	margin-top: 20px
+	cursor: pointer
+
+	input[type="checkbox"]
+		display: none
+
+		&:checked + .custom-checkbox::before,
+		&:checked + .custom-checkbox::after
+			display: block
