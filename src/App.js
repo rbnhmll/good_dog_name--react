@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 
 import Switcher from './components/switcher'
 import NameForm from './components/name_form'
