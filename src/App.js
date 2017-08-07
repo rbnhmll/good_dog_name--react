@@ -83,7 +83,7 @@ class App extends Component {
   }
 
   setPhoto() {
-    const image = {backgroundImage: `url(${this.state.current_animal.src.large})`, height: "500px"};
+    const image = {backgroundImage: `url(${this.state.current_animal.src.large})`};
     this.setState({ backgroundImage: image });
   }
 
