@@ -5,14 +5,16 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {
   BrowserRouter as Router,
-  Route,
+  Route, Redirect,
 } from 'react-router-dom';
 
 const Index = () => {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" render={() => (
+          <Redirect to="/dog" />
+        )} />
         <Route path="/:animal" component={App} />
       </div>
     </Router>

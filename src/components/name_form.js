@@ -13,8 +13,18 @@ class NameForm extends Component {
           className="inputs"
           onSubmit={this.props.submitName}
         >
-          <input id="nameInput" type="text" />
-          <input type="submit" value="Name it!"/>
+          <input
+            id="nameInput"
+            type="text"
+            name="animalName"
+            onChange={this.props.setName}
+            autoFocus
+          />
+          <input
+            className="btn"
+            type="submit"
+            value="Name it!"
+          />
         </form>
       </div>
     );

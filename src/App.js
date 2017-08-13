@@ -15,6 +15,7 @@ class App extends Component {
       per_page: 40,
       current_animal: {},
       backgroundImage: {},
+      animalName: "",
     }
     
     this.submitName = this.submitName.bind(this);
@@ -23,6 +24,7 @@ class App extends Component {
     this.setPhoto = this.setPhoto.bind(this);
     this.getRandomNum = this.getRandomNum.bind(this);
     this.handleState = this.handleState.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   
   submitName(e) {
@@ -102,6 +104,10 @@ class App extends Component {
     })
   }
 
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   componentWillMount() {
     this.apiCall(this.state.page, this.state.animal)
     .then(res => {
@@ -128,6 +134,7 @@ class App extends Component {
           <NameForm
             submitName={this.submitName}
             animal={this.state.animal}
+            setName={this.handleChange}
           />
         </div>
       </div>

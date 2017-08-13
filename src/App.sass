@@ -41,7 +41,7 @@ h1
 	transition: all 0.5s ease
 	width: 100%
 
-button
+.btn
 	background: rgba($button-light, 0.9)
 	color: #ECF0F1
 	cursor: pointer
@@ -54,12 +54,13 @@ button
 .inputs
 	display: flex
 	justify-content: center
-	// max-width: 100%
 	input[type="text"],
-	button
+	.btn
 		display: inline-block
-	button
+	.btn
 		border-radius: 0 5px 5px 0
+		border: none
+		padding: 0 20px
 	input[type="text"]
 		border-radius: 5px 0 0 5px
 		color: $dark-grey
