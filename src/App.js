@@ -122,9 +122,12 @@ class App extends Component {
         style={this.state.backgroundImage}
       >
         <div className="wrapper">
-          <Switcher />
+          <Switcher
+            animal={this.state.animal}
+          />
           <NameForm
             submitName={this.submitName}
+            animal={this.state.animal}
           />
         </div>
       </div>
