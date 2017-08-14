@@ -56,10 +56,6 @@ class App extends Component {
       console.error(err);
     })
   }
-
-  // getRandomNum(limit) {
-  //   return Math.floor(Math.random() * limit) + 1;
-  // }
   
   getPhoto() {
     return new Promise((resolve, reject) => {
