@@ -28,8 +28,6 @@ class App extends Component {
   }
   
   nameAgain() {
-    // e.preventDefault();
-    console.log("Submit form");
     this.apiCall(this.state.page, this.state.animal)
     .then(res => {
       this.handleState(res);
