@@ -18,7 +18,7 @@ class App extends Component {
       animalName: "",
     }
     
-    this.submitName = this.submitName.bind(this);
+    this.nameAgain = this.nameAgain.bind(this);
     this.apiCall = this.apiCall.bind(this);
     this.getPhoto = this.getPhoto.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
@@ -27,8 +27,8 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   
-  submitName(e) {
-    e.preventDefault();
+  nameAgain() {
+    // e.preventDefault();
     console.log("Submit form");
     this.apiCall(this.state.page, this.state.animal)
     .then(res => {
@@ -132,7 +132,7 @@ class App extends Component {
             animal={this.state.animal}
           />
           <NameForm
-            submitName={this.submitName}
+            nameAgain={this.nameAgain}
             animal={this.state.animal}
             setName={this.handleChange}
           />
