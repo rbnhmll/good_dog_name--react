@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { getRandomNum } from './helpers';
+import { bannedWords } from '../banned';
 
 class Results extends Component {
   constructor(props) {
@@ -12,9 +13,20 @@ class Results extends Component {
 
     const animalName = props.animalName;
     const animal = props.animal;
-    console.log(animal, animalName)
 
     this.getAffirmation = this.getAffirmation.bind(this);
+    this.validateSafeName = this.validateSafeName.bind(this);
+  }
+
+  validateSafeName(name) {
+    const name_parts = name.split(' ');
+    for (var i=0; i<name_parts.length; i++) {
+      if (bannedWords.includes(name_parts[i])) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   }
 
   getAffirmation() {
@@ -37,8 +49,12 @@ class Results extends Component {
       `${animalName} is totally right, how did you know?`,
       `Such a ${animalName}, right?`,
     ];
-    const randomMessage = affirmations[getRandomNum(affirmations.length)]
-    return randomMessage;
+    if (this.validateSafeName(animalName)) {
+      const randomMessage = affirmations[getRandomNum(affirmations.length)]
+      return randomMessage;
+    } else {
+      return "That's not a good name at all 💩"
+    }
   }
 
   render() {
@@ -50,8 +66,8 @@ class Results extends Component {
           onClick={this.props.nameAgain}
           onClick={this.props.reset}
         >
-          New animal, who dis!
-        </button>
+          New {this.state.animal}, who dis!
+        </button> 
       </div>
     );
   }
