@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { getRandomNum } from './components/helpers';
 import Switcher from './components/switcher'
 import NameForm from './components/name_form'
 
@@ -22,7 +23,6 @@ class App extends Component {
     this.apiCall = this.apiCall.bind(this);
     this.getPhoto = this.getPhoto.bind(this);
     this.setPhoto = this.setPhoto.bind(this);
-    this.getRandomNum = this.getRandomNum.bind(this);
     this.handleState = this.handleState.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -59,9 +59,9 @@ class App extends Component {
     })
   }
 
-  getRandomNum(limit) {
-    return Math.floor(Math.random() * limit) + 1;
-  }
+  // getRandomNum(limit) {
+  //   return Math.floor(Math.random() * limit) + 1;
+  // }
   
   getPhoto() {
     return new Promise((resolve, reject) => {
@@ -73,7 +73,7 @@ class App extends Component {
       }
     })
     .then(res => {
-      const index = this.getRandomNum(this.state.photos.length);
+      const index = getRandomNum(this.state.photos.length);
       this.setState({ current_animal: this.state.photos[index] });
     })
     .then(() => {
@@ -85,8 +85,12 @@ class App extends Component {
   }
 
   setPhoto() {
-    const image = {backgroundImage: `url(${this.state.current_animal.src.large})`};
-    this.setState({ backgroundImage: image });
+    if (this.state.current_animal.src) {
+      const image = {backgroundImage: `url(${this.state.current_animal.src.large})`};
+      this.setState({ backgroundImage: image });
+    } else {
+      this.getPhoto();
+    }
   }
 
   handleState(res) {
@@ -94,7 +98,7 @@ class App extends Component {
     .then(res => {
       const { total_results, photos } = res;
       const page_count = Math.ceil(total_results / this.state.per_page);
-      const random_page = this.getRandomNum(page_count);
+      const random_page = getRandomNum(page_count);
       this.setState({
         page: random_page,
         page_count,
@@ -135,6 +139,7 @@ class App extends Component {
             nameAgain={this.nameAgain}
             animal={this.state.animal}
             setName={this.handleChange}
+            animalName={this.state.animalName}
           />
         </div>
       </div>

@@ -50,6 +50,8 @@ class NameForm extends Component {
         :
           <Results
             reset={this.formReset}
+            animal={this.props.animal}
+            animalName={this.props.animalName}
           />
         }
       </div>
