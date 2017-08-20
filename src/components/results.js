@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { getRandomNum } from './helpers';
-import { bannedWords } from '../banned';
+import { bannedWords } from '../scripts/banned';
 
 class Results extends Component {
   constructor(props) {

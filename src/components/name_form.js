@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {init as firebaseInit, database} from '../scripts/firebase';
 
 import Results from './results';
 
 class NameForm extends Component {
   constructor() {
     super();
+    firebaseInit();
     this.state = {
       showResults: false,
     }
@@ -14,7 +16,13 @@ class NameForm extends Component {
 
   submitName(e) {
     e.preventDefault();
-    this.setState({ showResults: true })
+    this.setState({ showResults: true });
+    const animalId = this.props.animalObj.id;
+    const dbRef = database.ref();
+    dbRef.child(this.props.animalObj.id).update({
+      imageObj: this.props.animalObj,
+      animalName: this.props.animalName,
+    });
   }
 
   formReset() {

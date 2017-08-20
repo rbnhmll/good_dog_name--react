@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { getRandomNum } from './components/helpers';
-import Switcher from './components/switcher'
-import NameForm from './components/name_form'
+import Switcher from './components/switcher';
+import NameForm from './components/name_form';
 
 class App extends Component {
   constructor(props) {
@@ -133,6 +133,7 @@ class App extends Component {
             nameAgain={this.nameAgain}
             animal={this.state.animal}
             setName={this.handleChange}
+            animalObj={this.state.current_animal}
             animalName={this.state.animalName}
           />
         </div>
